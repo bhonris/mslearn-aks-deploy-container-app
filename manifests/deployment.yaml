@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bhon_aks_deploy_container_app
+  labels:
+    app: bhon_aks_deploy_container_app
+    kubernetes.azure.com/generator: devhub
+  namespace: sdfgs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bhon_aks_deploy_container_app
+  template:
+    metadata:
+      labels:
+        app: bhon_aks_deploy_container_app
+    spec:
+      containers:
+        - name: bhon_aks_deploy_container_app
+          image: khacrtest.azurecr.io/image-workflow-1729120839798:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8010

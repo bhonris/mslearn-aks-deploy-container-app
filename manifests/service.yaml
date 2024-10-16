@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bhon_aks_deploy_container_app
+  namespace: sdfgs
+  labels:
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app: bhon_aks_deploy_container_app
+  ports:
+    - protocol: TCP
+      port: 8010
+      targetPort: 8010
